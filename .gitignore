@@ -1,0 +1,13 @@
+# IDE Files
+.idea/
+
+# OS Files
+.DS_Store
+
+# Buildable Files
+build/logs/
+build/pdepend/
+build/phpdox/
+
+# Composer Sourced Files
+vendor/

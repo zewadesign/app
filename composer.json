@@ -1,0 +1,23 @@
+{
+  "name": "zewa/app",
+  "type": "project",
+  "description": "A starter app on the Zewa Framework.",
+  "keywords": ["framework", "zewa"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zech Walden",
+      "email": "zech@zewadesign.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "app\\": "./"
+    }
+  },
+  "require": {
+    "php": ">=5.4.0",
+    "zewa/framework": "dev-master"
+  },
+  "require-dev": {}
+}
