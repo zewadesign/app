@@ -2,9 +2,7 @@
 
 namespace core;
 namespace app\libraries;
-use core\Database;
 use \Exception as Exception;
-use \core\app;
 
 class ACL
 {
@@ -83,6 +81,8 @@ class ACL
      * @param boolean|int $roleId
      */
 
+    private $returnQueryString = 'r';
+
     public function __construct($userId = false, $roleId = false)
     {
 
@@ -100,6 +100,86 @@ class ACL
             $this->userId = $userId;
         }
 
+    }
+
+    /**
+     * Handles client request within  ACL
+     *
+     * @access private
+     */
+    public function secureStart(callable $initiateApp) {
+
+        $authorizationCode = $this->hasAccessRights(
+            $this->configuration->router->module,
+            $this->configuration->router->controller,
+            $this->configuration->router->method
+        );
+
+        switch ($authorizationCode) {
+
+            case '1':
+                $initiateApp();
+                break;
+            case '2':
+                $this->secureRedirect();
+                break;
+
+            case '3': //@TODO: setup module 404's.
+                $this->output = $this->noAccessRedirect();
+                break;
+        }
+    }
+
+
+    /**
+     * Set 401 header, provide no access view if authenticated
+     * and access is insufficient / protected
+     *
+     * @access private
+     */
+    private function noAccessRedirect()
+    {
+
+        return \core\Router::showNoAccess($this->module . '/noaccess');
+
+    }
+
+    /**
+     * Redirect if guest and access is insufficient / protected
+     *
+     * @access private
+     */
+    private function secureRedirect()
+    {
+
+        //@TODO:: add flash message to login?
+        $currentURL = $this->configuration->router->currentURL;
+        $baseURL = $this->configuration->router->baseURL;
+
+        $redirect = base64_encode(str_replace($baseURL, '', $currentURL));
+
+        $authenticationURL = $this->baseURL . '/';
+        $authenticationURL .= $this->configuration->modules[$this->module]['aclRedirect'] . '?' . $this->returnQueryString . '=' . $redirect;
+
+        $this->redirect($authenticationURL);
+
+    }
+
+    private function redirect($url)
+    {
+
+        $url = str_replace(array('\r', '\n', '%0d', '%0a'), '', $url);
+
+        if (headers_sent()) {
+            return false;
+        }
+
+        // trap session vars before redirect
+        session_write_close();
+
+        header('HTTP/1.1 401 Access Denied');
+        header("Location: $url");
+        exit;
     }
 
     /**
