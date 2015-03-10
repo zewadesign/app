@@ -48,8 +48,14 @@ $core['acl'] = false;
 
 /**
  * Session
+ *
+ * The session can be set as file for file based sessions
+ * or database for database driven sessions.
  */
-$core['session'] = false;
+$core['session'] = [
+    'interface' => 'file',
+    'flashdataId' => ''
+];
 
 /**
  * Cache
