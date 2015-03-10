@@ -12,7 +12,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "app\\": "./"
+      "app\\": "./",
+      "app\\libraries\\": "./app/libraries"
     }
   },
   "require": {
