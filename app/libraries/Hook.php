@@ -1,6 +1,6 @@
 <?php
 
-//namespace core;
+namespace core;
 namespace app\libraries;
 use \Exception as Exception;
 /**
