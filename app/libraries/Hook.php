@@ -1,7 +1,7 @@
 <?php
 
+//namespace core;
 namespace app\libraries;
-namespace core;
 use \Exception as Exception;
 /**
  * This class registers, dispatches and invokes configured hooks.
@@ -82,27 +82,8 @@ class Hook
 
     }
 
-    public function call($hook = '')
-    {
-
-        try {
-
-            if($hook === '') {
-                throw new Exception('You must provide a valid, registered hook index');
-            }
-
-            $this->dispatch($hook);
-
-        } catch(Exception $e) {
-
-            echo 'Message' . $e->getMessage();
-
-        }
-
-    }
-
     /**
-     * Dispatch a hook to $this->process to be invoked
+     * Calls a hook to $this->process to be invoked
      *
      * @access public
      *
@@ -110,15 +91,13 @@ class Hook
      * @throws exception when a hook index is not provided.
      */
 
-    public function dispatch($hook)
+    public function call($hook)
     {
 
-        if ($this->hooks[$hook]) {
+        if (!empty($this->hooks[$hook])) {
 
             $this->process($hook);
 
-        } else {
-            throw new Exception('The hook index you provided does not exist');
         }
 
         return;

@@ -10,4 +10,5 @@ build/pdepend/
 build/phpdox/
 
 # Composer Sourced Files
+composer.lock
 vendor/
