@@ -2,7 +2,7 @@
 
 namespace core;
 namespace app\libraries;
-use \Exception as Exception;
+
 /**
  * This class registers, dispatches and invokes configured hooks.
  *
@@ -135,12 +135,12 @@ class Hook
         try {
 
             if (self::$instance === null) {
-                throw new Exception('Unable to get an instance of the load class. The class has not been instantiated yet.');
+                throw new \Exception('Unable to get an instance of the load class. The class has not been instantiated yet.');
             }
 
             return self::$instance;
 
-        } catch(Exception $e) {
+        } catch(\Exception $e) {
 
             echo 'Message' . $e->getMessage();
 
