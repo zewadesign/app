@@ -53,8 +53,15 @@ $core['acl'] = false;
  * or database for database driven sessions.
  */
 $core['session'] = [
-    'interface' => 'file',
-    'flashdataId' => ''
+    'interface' => 'database',
+    'securityCode' => '0123ABC',
+    'expiration' => 7200,
+    'flashdataId' => '_z_session_flashdata',
+    'lockToUserAgent' => false,
+    'lockToIP' => false,
+    'gcProbability' => 1,
+    'gcDivisor' => 100,
+    'tableName' => 'Session'
 ];
 
 /**
@@ -69,9 +76,9 @@ $core['cache'] = false;
 /**
  * Database
  */
-$core['database'] = false;
-//$core['database']['default'] = [
-//    'dsn' => 'mysql:host=localhost;dbname=database',
-//    'user' => 'db username',
-//    'pass' => 'db password'
-//];
+//$core['database'] = false;
+$core['database']['default'] = [
+    'dsn' => 'mysql:host=localhost;dbname=idm',
+    'user' => 'developer',
+    'pass' => 'developer'
+];
