@@ -2,7 +2,6 @@
 namespace core;
 namespace app\classes;
 
-
 /**
  * Ignited Datatables
  *
