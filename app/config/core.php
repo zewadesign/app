@@ -67,11 +67,11 @@ $core['session'] = [
 /**
  * Cache
  */
-$core['cache'] = false;
-//$core['cache'] = [
-//    'host' => 'localhost',
-//    'port' => '11111'
-//];
+//$core['cache'] = false;
+$core['cache'] = [
+    'host' => 'localhost',
+    'port' => '11211'
+];
 
 /**
  * Database
