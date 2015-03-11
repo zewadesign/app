@@ -1,6 +1,6 @@
 <?php
 namespace core;
-namespace app\libraries;
+namespace app\classes;
 
 /**
  * Cache handling of key/value pairs

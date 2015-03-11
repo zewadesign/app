@@ -1,7 +1,7 @@
 <?php
-// This should just be a simple autoloaded class used whenever and wherever it gets used.
-namespace app\libraries;
-use core\Registry;
+namespace core;
+namespace app\classes;
+
 
 /**
  * Ignited Datatables

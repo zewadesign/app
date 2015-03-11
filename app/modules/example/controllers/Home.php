@@ -18,7 +18,7 @@ Class Home extends core\Controller {
     public function index() {
 
 
-        $cache = new \app\libraries\Cache($this->configuration->cache->host, $this->configuration->cache->port);
+        $cache = new \app\classes\Cache($this->configuration->cache->host, $this->configuration->cache->port);
 
         $result = $cache->get("blah");
 

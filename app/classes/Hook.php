@@ -1,7 +1,7 @@
 <?php
 
 namespace core;
-namespace app\libraries;
+namespace app\classes;
 
 /**
  * This class registers, dispatches and invokes configured hooks.

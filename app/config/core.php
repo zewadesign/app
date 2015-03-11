@@ -2,12 +2,7 @@
 /**
  * Auto-loaded Helpers
  */
-$core['autoload']['helpers'] = ['url','script_loader'];
-
-/**
- * Auto-loaded Libraries
- */
-$core['autoload']['libraries'] = [];
+$core['helpers'] = ['url','script_loader'];
 
 /**
  * Language
