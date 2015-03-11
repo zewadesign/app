@@ -1,9 +1,6 @@
 <?php
-// Some kind of form validation library in the core of the framework ..  but doesn't get used?
-// This definitely seems out of place at the moment.
 namespace core;
-
-use \Exception as Exception;
+namespace app\classes;
 
 /**
  * Validation to compare data sets against rules
@@ -161,7 +158,7 @@ class Validate
                     }
 
                 } else {
-                    throw new Exception("Validate method '$method' does not exist.");
+                    throw new \Exception("Validate method '$method' does not exist.");
                 }
             }
         }
@@ -192,7 +189,7 @@ class Validate
         }
 
         if (!$this->_configuration->database) {
-            throw new Exception("The is unique validation rule required a valid database connection.");
+            throw new \Exception("The is unique validation rule required a valid database connection.");
         }
 
         $database = Registry::get('_database');

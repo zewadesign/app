@@ -1,5 +1,4 @@
 <?php
-
 namespace core;
 namespace app\classes;
 
@@ -88,7 +87,6 @@ class Hook
      * @access public
      *
      * @param string $hook pointer to closure
-     * @throws exception when a hook index is not provided.
      */
 
     public function call($hook)

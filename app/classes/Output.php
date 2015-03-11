@@ -1,7 +1,6 @@
 <?php
 namespace core;
-
-use \Exception as Exception;
+namespace app\classes;
 
 /**
  * Output santization
@@ -47,12 +46,13 @@ class Output
 
     /**
      * Load up some basic configuration settings.
+     * @TODO: remove.. ?
      */
-    public function __construct($load)
-    {
-        $this->load = $load;
-        $this->language = $this->load->lang($this->load->config('core', 'language'));
-    }
+//    public function __construct($load)
+//    {
+//        $this->load = $load;
+//        $this->language = $this->load->lang($this->load->config('core', 'language'));
+//    }
 
     /**
      * Replace with system language
@@ -165,7 +165,7 @@ class Output
                     }
 
                 } else {
-                    throw new Exception("Filter method '$filter' does not exist.");
+                    throw new \Exception("Filter method '$filter' does not exist.");
                 }
             }
         }
