@@ -1,5 +1,6 @@
 <?php
 namespace core;
+namespace app\libraries;
 
 /**
  * Cache handling of key/value pairs
@@ -38,12 +39,11 @@ class Cache
     public function get($key)
     {
 
-        if($result = $this->cache->get($key)) {
+        if($result = $this->memcached->get($key)) {
 
             return $result;
 
         }
-
 
         return false;
     }
