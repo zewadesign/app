@@ -62,18 +62,18 @@ $core['session'] = [
 /**
  * Cache
  */
-//$core['cache'] = false;
-$core['cache'] = [
-    'host' => 'localhost',
-    'port' => '11211'
-];
+$core['cache'] = false;
+//$core['cache'] = [
+//    'host' => 'localhost',
+//    'port' => '11211'
+//];
 
 /**
  * Database
  */
-//$core['database'] = false;
-$core['database']['default'] = [
-    'dsn' => 'mysql:host=localhost;dbname=idm',
-    'user' => 'developer',
-    'pass' => 'developer'
-];
+$core['database'] = false;
+//$core['database']['default'] = [
+//    'dsn' => 'mysql:host=localhost;dbname=idm',
+//    'user' => 'developer',
+//    'pass' => 'developer'
+//];
