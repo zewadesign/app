@@ -17,17 +17,17 @@ Class Home extends core\Controller {
 
     public function index() {
 
+//enable to view caching, make sure to config in core.php
+//        $cache = new \app\classes\Cache($this->configuration->cache->host, $this->configuration->cache->port);
 
-        $cache = new \app\classes\Cache($this->configuration->cache->host, $this->configuration->cache->port);
+//        $result = $cache->get("blah");
 
-        $result = $cache->get("blah");
-
-        if ($result) {
-            echo $result;
-        } else {
-            echo "No matching key found.  I'll add that now!";
-            $cache->set("blah", "I am data!  I am held in memcached!") or die("Couldn't save anything to memcached...");
-        }
+//        if ($result) {
+//            echo $result;
+//        } else {
+//            echo "No matching key found.  I'll add that now!";
+//            $cache->set("blah", "I am data!  I am held in memcached!") or die("Couldn't save anything to memcached...");
+//        }
 
         $layout = $this->load->view(
             'example/home',
