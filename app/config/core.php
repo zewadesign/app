@@ -48,7 +48,7 @@ $core['acl'] = false;
  * or database for database driven sessions.
  */
 $core['session'] = [
-    'interface' => 'database',
+    'interface' => 'file',
     'securityCode' => '0123ABC',
     'expiration' => 7200,
     'flashdataId' => '_z_session_flashdata',
