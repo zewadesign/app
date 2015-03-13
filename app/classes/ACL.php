@@ -1,6 +1,7 @@
 <?php
 namespace core;
 namespace app\classes;
+use app\classes;
 
 class ACL
 {

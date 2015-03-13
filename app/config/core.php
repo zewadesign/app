@@ -2,7 +2,7 @@
 /**
  * Auto-loaded Helpers
  */
-$core['helpers'] = ['url','script_loader'];
+$core['helpers'] = ['url'];
 
 /**
  * Language
