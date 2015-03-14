@@ -3,7 +3,11 @@
 
     <div class="jumbotron">
         <h1>404</h1>
-        <p>I'm so lost....</p>
+        <p>
+            <?php if(isset($errorMessage)) {
+                echo $errorMessage;
+            } ?>
+        </p>
     </div>
 
 </div>
