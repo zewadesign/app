@@ -1,6 +1,10 @@
 # IDE Files
 .idea/
 
+# Logs
+access.log
+error.log
+
 # OS Files
 .DS_Store
 
