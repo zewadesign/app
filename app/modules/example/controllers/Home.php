@@ -29,9 +29,9 @@ Class Home extends core\Controller {
 //            $cache->set("blah", "I am data!  I am held in memcached!") or die("Couldn't save anything to memcached...");
 //        }
 
-//        $example = $this->load->model('example');
-//
-//        print_r($example->fetchSession());die();
+        $example = $this->load->model('example');
+
+        print_r($example->fetchSession());die();
 
         $layout = $this->load->view(
             'example/home',

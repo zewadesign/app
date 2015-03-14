@@ -1,40 +1,167 @@
 <?php
 namespace core;
 namespace app\classes;
-use \PDO as PDO;
-//TODO add USE Schema query
 
-
+/**
+ * Database PDO DAL
+ *
+ * @author Zechariah Walden<zech @ zewadesign.com>
+ * @TODO: add USE Schema query
+ *
+ * @TODO: insert transactions / roll backs
+ * @TODO: convert syntax to ? placeholders ??
+ * @TODO: put everything in transactional SQL commands
+ */
 class Database
 {
     /**
-     * Reference to instantiated controller object.
+     * System configuration
      *
      * @var object
      */
     private $configuration;
+
+    /**
+     * Reference to instantiated database object.
+     *
+     * @var object
+     */
     protected static $instance;
+
+    /**
+     * Database handler
+     *
+     * @var object
+     */
     private $dbh;
-    private $dbhStore = array();
+
+    /**
+     * DSN store
+     *
+     * @var array
+     */
+    private $dbhStore = [];
+
+    /**
+     * Current call JOIN
+     *
+     * @var string
+     */
     private $join = '';
-    private $groupBy = false;
-    private $where;
-    private $orWhere = false;
-    private $typedWhere = false;
-    private $whereBetween = false;
-    private $where_in = false;
-    private $whereLike = false;
-    private $whereNotIn = false;
+
+    /**
+     * Current call GRPI{ NU
+     *
+     * @var string
+     */
+    private $groupBy = '';
+
+    /**
+     * Current call WHERE
+     *
+     * @var string
+     */
+    private $where = '';
+
+    /**
+     * Current call OR WHERE
+     *
+     * @var string
+     */
+    private $orWhere = '';
+
+    /**
+     * Current call TYPED WHERE
+     * @TODO: remove??
+     * @var string
+     */
+//    private $typedWhere = false;
+
+    /**
+     * Current call WHERE BETWEEN
+     *
+     * @var string
+     */
+    private $whereBetween = '';
+
+    /**
+     * Current call WHERE IN
+     *
+     * @TODO camelCase
+     * @var string
+     */
+    private $where_in = '';
+
+    /**
+     * Current call WHERE LIKE
+     *
+     * @var string
+     */
+    private $whereLike = '';
+
+    /**
+     * Current call WHERE NOT IN
+     *
+     * @var string
+     */
+    private $whereNotIn = '';
+
+    /**
+     * Current call FROM TABLE
+     *
+     * @var string
+     */
     private $table;
+
+    /**
+     * Current call SELECT columns
+     *
+     * @var string
+     */
     private $columns = '*';
-    private $orderBy;
+
+    /**
+     * Current call ORDER BY
+     *
+     * @var string
+     */
+    private $orderBy = '';
+
+    /**
+     * Current call LIMIT
+     *
+     * @var string
+     */
     private $limit;
-    private $arguments = array();
-    private $whereKeyValues = array();
+
+    /**
+     * Prepared statement parameters in order
+     *
+     * @var array
+     */
+    private $arguments = [];
+
+    /**
+     * Current call JOIN
+     *
+     * @TODO update ?
+     * @var string
+     */
+    private $whereKeyValues = [];
+
+    /**
+     * Current call JOIN
+     *
+     * @TODO update ?
+     * @var string
+     */
     private $orWhereKeyValues = array();
 
-//    public $tokenizedQuery = array();
-
+    /**
+     * Grab application configuration, set active DSN
+     *
+     * @param bool $name core config index
+     */
     public function __construct($name = false)
     {
 
@@ -50,6 +177,11 @@ class Database
 
     }
 
+    /**
+     * Set the active DSN (from available app core configuration)
+     *
+     * @param $name
+     */
     public function setDSN($name)
     {
 
@@ -77,6 +209,11 @@ class Database
         }
     }
 
+    /**
+     * Close statement
+     *
+     * @param $sth
+     */
     private function close($sth)
     {
         $sth->closeCursor();
@@ -99,20 +236,31 @@ class Database
 
     }
 
+    /**
+     * Generate GROUP BY statement
+     *
+     * @param mixed $column
+     * @return $this
+     * @throws \Exception
+     */
     public function groupBy($column = false)
     {
 
-        if (!$column) {
+        if ($column === false) {
             throw new \Exception('Please specify a column for the group by.');
         }
 
-//        $this->arguments = array_merge($this->arguments, array($column));
         $this->groupBy = ' GROUP BY ' . $column;
 
         return $this;
 
     }
 
+    /**
+     * Construct WHERE portion of SQL query from properties
+     *
+     * @return string
+     */
     private function prepareWhere()
     {
 
@@ -159,6 +307,12 @@ class Database
         return $formattedWhere;
     }
 
+    /**
+     * Returns true if value contains SQL keywords
+     *
+     * @param $str
+     * @return bool
+     */
     private function hasOperator($str)
     {
 
@@ -169,6 +323,14 @@ class Database
 
     }
 
+    /**
+     * Normalize provided WHERE parameters, and their order
+     *
+     * @param $field
+     * @param bool $value
+     * @return array
+     * @throws \Exception
+     */
     public function whereParamToArray($field, $value = false)
     {
 
@@ -196,7 +358,13 @@ class Database
 
     }
 
-    //@TODO: add extension for tools that extract plaintext queries into prepared statements & binding
+    /**
+     * Generate WHERE prepared statement
+     *
+     * @param $values
+     * @return bool|string
+     * @TODO: add extension for tools that extract plaintext queries into prepared statements & binding
+     */
     private function prepareWhereValues($values)
     {
 
@@ -249,6 +417,13 @@ class Database
 
     }
 
+    /**
+     * Generate WHERE LIKE statement
+     *
+     * @param $column
+     * @param bool $values
+     * @return $this
+     */
     public function whereLike($column, $values = false)
     {
         $values = '%' . $values . '%';
@@ -260,6 +435,13 @@ class Database
 
     }
 
+    /**
+     * Generate WHERE IN statement
+     *
+     * @param $column
+     * @param bool $values
+     * @return $this
+     */
     public function whereIn($column, $values = false)
     {
 
@@ -270,6 +452,13 @@ class Database
 
     }
 
+    /**
+     * Genere WHERE NOT IN statement
+     *
+     * @param $column
+     * @param bool $values
+     * @return $this
+     */
     public function whereNotIn($column, $values = false)
     {
 
@@ -280,6 +469,14 @@ class Database
 
     }
 
+    /**
+     * Generate OR WHERE statement
+     *
+     * @param $field
+     * @param bool $value
+     * @return $this
+     * @throws \Exception
+     */
     public function orWhere($field, $value = false)
     {
 
@@ -293,6 +490,15 @@ class Database
 
     }
 
+    /**
+     * Generate WHERE statement
+     *
+     * @param $field
+     * @param bool $value
+     * @param bool $typedConjunction
+     * @return $this
+     * @throws \Exception
+     */
     public function where($field, $value = false, $typedConjunction = false)
     {
 
@@ -320,6 +526,13 @@ class Database
 
     }
 
+    /**
+     * Specify table for query
+     *
+     * @param bool $table
+     * @return $this
+     * @throws \Exception
+     */
     public function table($table = false)
     {
 
@@ -333,6 +546,14 @@ class Database
 
     }
 
+    /**
+     * Generate JOIN statement
+     *
+     * @param $table
+     * @param $condition
+     * @param string $type
+     * @return $this
+     */
     public function join($table, $condition, $type = 'LEFT')
     {
 
@@ -342,6 +563,12 @@ class Database
 
     }
 
+    /**
+     * Generate SELECT statement
+     *
+     * @param bool $columns
+     * @return $this
+     */
     public function select($columns = false)
     {
 
@@ -351,7 +578,13 @@ class Database
 
     }
 
-
+    /**
+     * Generate ORDER BY statement
+     *
+     * @param $sort
+     * @param bool $order
+     * @return $this
+     */
     public function orderBy($sort, $order = false)
     {
 
@@ -374,6 +607,14 @@ class Database
 
     }
 
+    /**
+     * Generate WHERE BETWEEN statement
+     *
+     * @param $field
+     * @param $start
+     * @param $finish
+     * @param bool $escape
+     */
     public function whereBetween($field, $start, $finish, $escape = false)
     {
 
@@ -387,6 +628,13 @@ class Database
 
     }
 
+    /**
+     * Generate LIMIT statement
+     *
+     * @param int $limit
+     * @param bool $offset
+     * @return $this
+     */
     public function limit($limit = 10, $offset = false)
     {
 
@@ -404,16 +652,26 @@ class Database
 
     }
 
-
+    /**
+     * Fetch the last inserted ID
+     *
+     * @return mixed
+     */
     public function lastInsertId()
     {
 
         return $this->dbh->lastInsertId();
 
     }
-
+    /**
+     * Perform query directly (prepared statements supported
+     * with ? and ordered params)
+     *
+     * @param $sqlQuery
+     * @param array $params
+     * @throws \Exception
+     */
     //typed queries?
-    //dropped result manipulation.. you are querying your own stuff..
     public function query($sqlQuery, $params = [])
     {
 
@@ -437,7 +695,12 @@ class Database
 
     }
 
-
+    /**
+     * Execute a prepared read query
+     *
+     * @param bool $resultSet
+     * @throws \Exception
+     */
     public function fetch($resultSet = false)
     {
 
@@ -469,7 +732,12 @@ class Database
 
     }
 
-
+    /**
+     * Execute the prepared update query
+     *
+     * @param $values
+     * @throws \Exception
+     */
     public function update($values)
     {
 
@@ -496,8 +764,11 @@ class Database
 
     }
 
-//@TODO: insert transactions / roll backs
-
+    /**
+     * Execute the prepared delete query
+     *
+     * @throws \Exception
+     */
     public function delete()
     {
         try {
@@ -516,8 +787,14 @@ class Database
         }
 
     }
-    //@TODO: convert syntax to ? placeholders ??
-    //@TODO: put everything in transactional SQL commands
+
+    /**
+     * Execute the prepared insert query
+     *
+     * @param $values
+     * @param bool $command
+     * @throws \Exception
+     */
     public function insert($values, $command = false)
     {
 
@@ -548,6 +825,13 @@ class Database
 
     }
 
+    /**
+     * Execute the prepared batch insert
+     *
+     * @param $batchData
+     * @param bool $command
+     * @throws \Exception
+     */
     public function insertBatch($batchData, $command = false)
     {
 
@@ -598,6 +882,12 @@ class Database
 
     }
 
+    /**
+     * Execute the prepared batch update
+     *
+     * @param $batchData
+     * @throws \Exception
+     */
     public function updateBatch($batchData)
     {
         //@TODO: convert function to use placeholders ?
