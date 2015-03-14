@@ -31,7 +31,7 @@ Class Home extends core\Controller {
 
         $example = $this->load->model('example');
 
-        print_r($example->fetchSession());die();
+//        print_r($example->fetchSession());die();
 
         $layout = $this->load->view(
             'example/home',
