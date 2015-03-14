@@ -3,9 +3,13 @@
 
 ## Installing ##
 ```
-git clone git@bitbucket.org:zwalden/mmvc.git
-cd mmvc
+git@github.com:zewadesign/app.git or https://github.com/zewadesign/app.git
+cd app
 composer install
+bower install
+```
+
+## Session Table ##
 ```
 CREATE TABLE `Session` (
   `id` varchar(32) NOT NULL DEFAULT '',
