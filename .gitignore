@@ -12,3 +12,6 @@ build/phpdox/
 # Composer Sourced Files
 composer.lock
 vendor/
+
+# Bower resources
+public/resources/
