@@ -78,6 +78,7 @@ class ACL
      *
      * @param boolean|int $userId
      * @param boolean|int $roleId
+     * @TODO: use PDO directly, decouple from database
      */
 
     private $returnQueryString = 'r';
@@ -86,7 +87,7 @@ class ACL
     {
 
         $this->configuration = App::getConfiguration();
-        $this->database = Database::getInstance();
+        $this->database = \core\Database::getInstance();
 
         if ($this->configuration->cache) {
             $this->cache = Cache::getInstance();
