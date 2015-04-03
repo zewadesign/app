@@ -10,11 +10,16 @@ $core['helpers'] = ['url'];
 $core['language'] = 'en_lang';
 
 /**
+ * Layouts
+ */
+$core['layouts']['default'] = 'admin/layout';
+
+/**
  * Modules
  */
 $core['modules']['defaultModule'] = 'example';
 $core['modules']['example'] = [
-    'aclRedirect' => 'usr/account/login',
+    'aclRedirect' => FALSE,
     'defaultController' => 'home',
     'defaultMethod' => 'index'
 ];
