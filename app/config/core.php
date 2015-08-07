@@ -12,7 +12,7 @@ $core['language'] = 'en_lang';
 /**
  * Layouts
  */
-$core['layouts']['default'] = 'admin/layout';
+$core['layouts']['default'] = 'example/layout';
 
 /**
  * Modules
