@@ -2,6 +2,7 @@
 
 namespace app\modules\example\controllers;
 use \core as core;
+use \app\models as model;
 
 Class Home extends core\Controller {
 
@@ -28,10 +29,13 @@ Class Home extends core\Controller {
 //            echo "No matching key found.  I'll add that now!";
 //            $cache->set("blah", "I am data!  I am held in memcached!") or die("Couldn't save anything to memcached...");
 //        }
+        $example = new model\Example();
+        $example->fetchSession();
 
-        $example = $this->load->model('example');
+//        $example = $this->load->model('example');
+//        $example->fetch
 
-//        print_r($example->fetchSession());die();
+//        $example->fetchSession();
 
         $view = new core\View;
         $view->setProperty('name', 'zech');
