@@ -250,9 +250,10 @@
         <div class="panel panel-default" id="images">
             <div class="panel-heading">Images
             </div>
-            <p><img src="http://placehold.it/120x100" class="img-rounded">
-                <img src="http://placehold.it/120x100" class="img-circle">
-                <img src="http://placehold.it/120x100" class="img-thumbnail"></p>
+            <p>
+                <img src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=120&h=100" class="img-rounded">
+                <img src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=120&h=100" class="img-circle">
+                <img src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=120&h=100" class="img-thumbnail"></p>
         </div>
     </div>
 </div>
@@ -502,12 +503,16 @@
             </div>
             <p></p>
             <div class="media">
-                <a class="pull-left" href="#">    <img class="media-object" src="https://app.divshot.com/img/placeholder-64x64.gif">  </a>
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64">
+                </a>
                 <div class="media-body">
                     <h4 class="media-heading">Media heading</h4>
                     <p>This is the content for your media.</p>
                     <div class="media">
-                        <a class="pull-left" href="#">    <img class="media-object" src="https://app.divshot.com/img/placeholder-64x64.gif">  </a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64">
+                        </a>
                         <div class="media-body">
                             <h4 class="media-heading">Media heading</h4>
                             <p>This is the content for your media.</p>

@@ -12,7 +12,7 @@ $core['language'] = 'en_lang';
 /**
  * Layouts
  */
-$core['layouts']['default'] = 'example/layout';
+$core['layouts']['default'] = 'layout';
 
 /**
  * Modules
@@ -53,7 +53,7 @@ $core['acl'] = false;
  * or database for database driven sessions.
  */
 $core['session'] = [
-    'interface' => 'file',
+    'interface' => 'database',
     'securityCode' => '0123ABC',
     'expiration' => 7200,
     'flashdataId' => '_z_session_flashdata',
@@ -76,9 +76,9 @@ $core['cache'] = false;
 /**
  * Database
  */
-$core['database'] = false;
-//$core['database']['default'] = [
-//    'dsn' => 'mysql:host=localhost;dbname=idm',
-//    'user' => 'developer',
-//    'pass' => 'developer'
-//];
+//$core['database'] = false;
+$core['database']['default'] = [
+    'dsn' => 'mysql:host=localhost;dbname=zewacore',
+    'user' => 'developer',
+    'pass' => 'developer'
+];

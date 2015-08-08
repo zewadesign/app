@@ -33,15 +33,19 @@ Class Home extends core\Controller {
 
 //        print_r($example->fetchSession());die();
 
-        $layout = $this->load->view(
-            'example/home',
-            $this->data
-        );
+        $view = new core\View;
+        $view->setProperty('name', 'zech');
+        $view->setView('example/home');
+        return $view->render();
+//        $layout = $this->load->view(
+//            'example/home',
+//            $this->data
+//        );
         //view takes an optional third parameter,
         //which is the relative path to the preferred layout
         //default is "layout" within the active module layout directory. (layouts/activemodule/layout) ,
 
-        return $layout;
+//        return $layout;
 
     }
 
