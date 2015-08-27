@@ -1,8 +1,8 @@
 <?php
 // Composer Autoloader
-require __DIR__ . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
+require __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
 
-define('ROOT_PATH', __DIR__);
+define('ROOT_PATH', __DIR__ . DIRECTORY_SEPARATOR . "..");
 define('APP_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'app');
 define('PUBLIC_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'public');
 
@@ -10,8 +10,10 @@ if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
-$out = new \core\App();
-print $out;
+$app = new \core\App();
+
+print $app->initialize();
+
 
 while (ob_get_level() > 0) {
     ob_end_flush();
