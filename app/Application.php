@@ -10,7 +10,7 @@ if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
-$app = new \core\App();
+$app = new \Zewa\App();
 
 print $app->initialize();
 
