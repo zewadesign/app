@@ -1,9 +1,8 @@
 <?php
 
 namespace app\modules\example\controllers;
-use \core as core;
 
-Class Ajax extends core\Controller {
+Class Ajax extends \Zewa\Controller {
 
     public $data;
 

@@ -1,14 +1,15 @@
 <?php
 
-namespace app\modules\example\controllers;
-use \core as core;
-use \app\models as model;
+namespace App\Module\Example\Controller;
 
-Class Home extends core\Controller {
+use Zewa\View;
+
+Class Home extends \Zewa\Controller {
 
     public $data;
 
-    public function __construct() {
+    public function __construct()
+    {
 
         parent::__construct();
 
@@ -16,52 +17,26 @@ Class Home extends core\Controller {
 
     }
 
-    public function index() {
-
-//enable to view caching, make sure to config in core.php
-//        $cache = new \app\classes\Cache($this->configuration->cache->host, $this->configuration->cache->port);
-
-//        $result = $cache->get("blah");
-
-//        if ($result) {
-//            echo $result;
-//        } else {
-//            echo "No matching key found.  I'll add that now!";
-//            $cache->set("blah", "I am data!  I am held in memcached!") or die("Couldn't save anything to memcached...");
-//        }
-        $example = new model\Example();
-        $example->fetchSession();
-
-//        $example = $this->load->model('example');
-//        $example->fetch
-
-//        $example->fetchSession();
-
-        $view = new core\View;
+    public function index()
+    {
+        $view = new View();
         $view->setProperty('name', 'zech');
         $view->setView('example/home');
         return $view->render();
-//        $layout = $this->load->view(
-//            'example/home',
-//            $this->data
-//        );
-        //view takes an optional third parameter,
-        //which is the relative path to the preferred layout
-        //default is "layout" within the active module layout directory. (layouts/activemodule/layout) ,
-
-//        return $layout;
-
     }
 
-    public function hello($name) {
+    public function hello($name)
+    {
         return "Hello " .$name;
     }
 
-    public function batman() {
+    public function batman()
+    {
         return 'I\'m batman!';
     }
 
-    public function usages($usage = false) {
+    public function usages($usage = false)
+    {
 
         $usage = strtolower($usage);
 
