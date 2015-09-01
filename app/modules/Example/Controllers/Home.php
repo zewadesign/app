@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Module\Example\Controller;
+namespace App\Module\Example\Controllers;
 
 use Zewa\View;
 
