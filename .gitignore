@@ -1,5 +1,11 @@
 # IDE Files
 .idea/
+.bash_history
+.gitattributes
+
+Vagrantfile
+puphpet/
+.vagrant
 
 # Logs
 access.log
