@@ -1,8 +1,7 @@
 <?php
-
 /**
-* Layouts
-*/
-$layouts['config'] = [
-    'default' => 'layout'
+ * Layouts
+ */
+return [
+    'default' => 'layout',
 ];

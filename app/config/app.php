@@ -1,9 +1,6 @@
 <?php
-
-/**
- * Database
- */
-//@TODO: set env
-$app['config'] = [
-    'environment' => 'development'
+return [
+    'language' => 'en_lang',
+    'environment' => 'development',
+    'cache' => false
 ];

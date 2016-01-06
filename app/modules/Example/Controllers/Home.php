@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Module\Example\Controllers;
+namespace App\Modules\Example\Controllers;
 
+use App\Models;
 use Zewa\View;
+//use App\Traits;
 
 Class Home extends \Zewa\Controller {
 

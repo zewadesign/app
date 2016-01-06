@@ -24,4 +24,4 @@ composer.lock
 vendor/
 
 # Bower resources
-public/resources/
+public/resources/bower

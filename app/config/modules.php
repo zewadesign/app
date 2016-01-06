@@ -1,12 +1,23 @@
 <?php
-
 /**
  * Modules
  */
-$modules['config'] = [
+return [
     'defaultModule' => 'example',
     'example' => [
-        'defaultController' => 'home',
+        'defaultController' => 'Home',
         'defaultMethod' => 'index'
-    ]
+    ],
+//    'client' => [
+//        'defaultController' => 'home',
+//        'defaultMethod' => 'index'
+//    ],
+//    'user' => [
+//        'defaultController' => 'home',
+//        'defaultMethod' => 'index'
+//    ],
+//    'api' => [
+//        'defaultController' => 'documentation',
+//        'defaultMethod' => 'index'
+//    ]
 ];

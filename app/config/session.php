@@ -1,14 +1,15 @@
 <?php
-
 /**
-* Session
-*
-* The session can be set as file for file based sessions
-* or database for database driven sessions.
-*/
-$session['config'] = false;
-//$session['config'] = [
-//    'interface' => 'file',
+ * Session
+ *
+ * The session can be set as file for file based sessions
+ * or database for database driven sessions.
+ */
+
+return false;
+
+//return [
+//    'interface' => 'database',
 //    'securityCode' => '0123ABC',
 //    'expiration' => 7200,
 //    'flashdataId' => '_z_session_flashdata',

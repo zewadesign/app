@@ -1,10 +1,11 @@
 <?php
 
 /**
-* Database
-*/
-$database['config'] = false;
-//$database['config'] = [
+ * Database
+ */
+
+return false;
+//return [
 //    'default' => [
 //        'dsn' => 'mysql:host=localhost;dbname=zewacore',
 //        'user' => 'developer',

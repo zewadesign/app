@@ -9,8 +9,13 @@ define('PUBLIC_PATH', ROOT_PATH . DIRECTORY_SEPARATOR . 'public');
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
-
 $app = new \Zewa\App();
+
+//$app::addEvent('preController', '\App\Hooks\PreControllerHook');
+
+define('GUEST_ID', 1);
+define('ADMIN_ID', 2);
+define('USER_ID', 3);
 
 print $app->initialize();
 

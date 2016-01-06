@@ -1,18 +1,15 @@
 <?php
-
 /**
-* ACL
-*/
-
-define('GUEST_ID', 1);
-define('ADMIN_ID', 2);
-define('USER_ID', 3);
-
-$acl['config'] = false;
-//$acl['config'] = [
-//    'roles' => [
-//        'guest' => GUEST_ID,
-//        'admin' => ADMIN_ID,
-//        'user' => USER_ID,
+ * ACL
+ */
+return false;
+//return [
+//    'userTable' => 'User',
+//    'userID' => 'id',
+//    'redirect' => 'user/account/login',
+//    'roles' => (object) [
+//        1 => 'guest',
+//        2 => 'admin',
+//        3 => 'user'
 //    ]
 //];
