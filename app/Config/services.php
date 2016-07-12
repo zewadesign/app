@@ -1,9 +1,9 @@
 <?php
 /**
- * Services
+ * Services Configuration File
  */
 
-return false;
+return [];
 //return [
 //    'logger' => function($settings = []) {
 //        return new \App\Classes\Log($settings);
