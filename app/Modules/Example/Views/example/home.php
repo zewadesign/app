@@ -1,20 +1,10 @@
 
 <div class="container">
 <div class="jumbotron">
-    <h1>Bootstrap 3 elements page example template</h1>
-    <p>A quick preview of everything Bootstrap has to offer.</p>
-    <p>Bootstrap 3.0. themes and HTML templates get on <a href="http://www.bootstraptor.com">Bootstraptor.com</a>!</p>
-    <p><a class="btn btn-danger btn-large" href="http://www.bootstraptor.com/">GET Bootstrap 3.0. NOW!</a></p>
+    <h1>Welcome to ZEWA Framework</h1>
+    <p>Documentation sold separately...</p>
 </div>
-<div class="row">
-    <div class="col-xs-12">
-        <PRE>
-            <code>
-        <?php //print_r($app);?>
-            </code>
-        </PRE>
-    </div>
-</div>
+
 <div class="row">
     <div class="col-lg-6">
         <div class="panel panel-default" id="headings">

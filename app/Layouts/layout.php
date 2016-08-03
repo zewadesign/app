@@ -3,7 +3,6 @@
 $this->addCSS([
     'resources/bower/bootstrap/dist/css/bootstrap.min.css',
     'resources/bower/bootstrap/dist/css/bootstrap-theme.min.css',
-    'resources/bower/font-awesome/css/font-awesome.min.css',
     'resources/css/stylesheet.css'
 ]);
 
@@ -37,7 +36,7 @@ $this->addJS([
     <div class="row">
         <div class="col-md-2 col-sm-2 hidden-xs nopadding">
             <div id="brand-logo">
-                <img src="<?=$this->baseURL('resources/img/logo.png');?>" alt="All Digital Rewards" />
+                <img src="<?=$this->baseURL('resources/img/logo.jpeg');?>" alt="ZEWA Framework" />
             </div>
         </div>
         <div class="col-md-10 col-sm-10 nopadding">
@@ -47,42 +46,19 @@ $this->addJS([
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-
                     </button>
-                    <a class="navbar-brand" href="#"><img src="<?=$this->baseURL('resources/img/logo.png');?>" alt="All Digital Rewards" /></a>
-
                 </div>
 
-                <div class="higher-nav hidden-xs">
-                    <div>
-                        <span>
-                            <i class="fa fa-fw fa-phone blue-text"></i> 555-555-555
-                        </span>
-                        <span>
-                            <i class="fa fa-fw fa-envelope blue-text"></i> support@alldigitalrewards.com
-                        </span>
-                    </div>
-                </div>
-                <br /><br />
                 <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="#">My Account</a>
+                            <a href="/example/home/batman">Batman</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
-                            <a href="#">Terms</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-                        <li>
-                            <a href="#">About Us</a>
+                            <a href="/batman">Batman via Route</a>
                         </li>
                     </ul>
                 </div>
@@ -90,13 +66,12 @@ $this->addJS([
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <?= $this->view; ?>
     </div>
 </div>
-
-
 
 <?=$this->fetchJS();?>
 

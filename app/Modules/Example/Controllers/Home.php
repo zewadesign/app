@@ -2,9 +2,7 @@
 
 namespace App\Modules\Example\Controllers;
 
-use App\Models;
 use Zewa\View;
-//use App\Traits;
 
 Class Home extends \Zewa\Controller {
 
@@ -29,7 +27,7 @@ Class Home extends \Zewa\Controller {
 
     public function hello($name)
     {
-        return "Hello " .$name;
+        return "Hello " . $name;
     }
 
     public function batman()
