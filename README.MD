@@ -2,7 +2,7 @@
 
 ## Installing ##
 ```
-composer create-project -s dev zewa/app
+composer create-project zewa/app
 bower install
 ```
 

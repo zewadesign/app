@@ -1,6 +1,6 @@
 <?php
-
-namespace app\modules\example\controllers;
+declare(strict_types=1);
+namespace Zewa\App\Modules\Example\Controllers;
 
 Class Ajax extends \Zewa\Controller {
 
