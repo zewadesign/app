@@ -3,8 +3,8 @@
  * Modules
  */
 return [
-    'defaultModule' => 'example',
-    'example' => [
+    'defaultModule' => 'Example',
+    'Example' => [
         'defaultController' => 'Home',
         'defaultMethod' => 'index'
     ],

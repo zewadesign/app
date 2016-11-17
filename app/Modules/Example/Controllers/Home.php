@@ -1,8 +1,6 @@
 <?php
-
-namespace App\Modules\Example\Controllers;
-
-use Zewa\View;
+declare(strict_types=1);
+namespace Zewa\App\Modules\Example\Controllers;
 
 Class Home extends \Zewa\Controller {
 
@@ -19,10 +17,8 @@ Class Home extends \Zewa\Controller {
 
     public function index()
     {
-        $view = new View();
-        $view->setProperty('name', 'zech');
-        $view->setView('example/home');
-        return $view->render();
+        $this->view->setProperty('name', 'zech');
+        return $this->view->render('example/home', 'layout');
     }
 
     public function hello($name)
@@ -37,40 +33,20 @@ Class Home extends \Zewa\Controller {
 
     public function usages($usage = false)
     {
+        //load modules..
 
-        $usage = strtolower($usage);
+        /** @var Ajax $ajaxController */
+        $ajaxController = $this->loadModule('\Zewa\App\Modules\Example\Controllers\Ajax');
+        /*
+         * optional parameters for constructor can be passed
+         * e.g: $this->load->controllers('example','home',['1','2','3']);
+         * if class is created, but parameters are provided, class will be instantiated with arguments
+         * if class is created, and no parameters are provided, class will be an instance
+         * if class is not created, class will be created.
+         *
+         **/
+        return $ajaxController->publicMethod();
 
-        switch($usage) {
-            case 'invokeowncontroller':
-
-                $homeController = $this->load->controller('example','home');
-                /*
-                 * optional parameters for constructor can be passed
-                 * e.g: $this->load->controllers('example','home',['1','2','3']);
-                 * if class is created, but parameters are provided, class will be instantiated with arguments
-                 * if class is created, and no parameters are provided, class will be an instance
-                 * if class is not created, class will be created.
-                 *
-                 **/
-                return $homeController->hello('Zech');
-
-            break;
-            case 'invokefriendlycontroller':
-
-                $ajaxController = $this->load->controller('example','ajax');
-
-                /*
-                 * $ajaxController->publicMethod() is available....
-                 * $ajaxController->privateMethod() is not available.
-                 */
-
-                return $ajaxController->publicMethod();
-
-            break;
-            default:
-                return $this->index();
-            break;
-        }
     }
 
 }

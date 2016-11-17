@@ -1,14 +1,14 @@
 <?php
 
 $this->addCSS([
-    'resources/bower/bootstrap/dist/css/bootstrap.min.css',
-    'resources/bower/bootstrap/dist/css/bootstrap-theme.min.css',
-    'resources/css/stylesheet.css'
+    $this->baseURL('resources/bower/bootstrap/dist/css/bootstrap.min.css'),
+    $this->baseURL('resources/bower/bootstrap/dist/css/bootstrap-theme.min.css'),
+    $this->baseURL('resources/css/stylesheet.css')
 ]);
 
 $this->addJS([
-    'resources/bower/jquery/dist/jquery.min.js',
-    'resources/bower/bootstrap/dist/js/bootstrap.min.js'
+    $this->baseURL('resources/bower/jquery/dist/jquery.min.js'),
+    $this->baseURL('resources/bower/bootstrap/dist/js/bootstrap.min.js')
 ]);
 ?>
 <!DOCTYPE html>
